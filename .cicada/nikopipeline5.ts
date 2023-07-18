@@ -1,12 +1,17 @@
 import { Job, Pipeline } from "https://deno.land/x/cicada@v0.1.50/mod.ts";
+import { Secret } from "https://deno.land/x/cicada/mod.ts";
+
+const secret = new Secret("nikosecret5");
 
 const job = new Job({
   name: "My First Job",
   image: "ubuntu:22.04",
   steps: [
     {
-	RUN "echo aaa",
+      name: "Run bash",
+      run: "echo hello from bash!",
     },
+
     {
       name: "Run deno/typescript",
       run: () => {
