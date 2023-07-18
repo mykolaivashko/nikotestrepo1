@@ -5,8 +5,7 @@ const job = new Job({
   image: "ubuntu:22.04",
   steps: [
     {
-      name: "Run bash",
-      run: "echo hello from bash!",
+	RUN "echo aaa",
     },
     {
       name: "Run deno/typescript",

